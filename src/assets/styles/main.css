@@ -1,35 +1,157 @@
-@import './base.css';
+@import 'tailwindcss';
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-weight: normal;
+@theme {
+  /** Colors */
+  --color-gray-50: oklch(0.98 0.005 259.84);
+  --color-gray-100: oklch(0.959 0.014 259.84);
+  --color-gray-200: oklch(0.91 0.013 259.84);
+  --color-gray-300: oklch(0.851 0.017 259.84);
+  --color-gray-400: oklch(0.676 0.026 259.84);
+  --color-gray-500: oklch(0.512 0.031 259.84);
+  --color-gray-600: oklch(0.393 0.033 259.84);
+  --color-gray-700: oklch(0.318 0.035 259.84);
+  --color-gray-800: oklch(0.271 0.036 259.84);
+  --color-gray-900: oklch(0.218 0.036 259.84);
+  --color-teal-50: oklch(0.988 0.013 199.3);
+  --color-teal-100: oklch(0.965 0.03 199.3);
+  --color-teal-200: oklch(0.918 0.06 199.3);
+  --color-teal-300: oklch(0.863 0.09 199.3);
+  --color-teal-400: oklch(0.794 0.12 199.3);
+  --color-teal-500: oklch(0.679 0.106 199.3);
+  --color-teal-600: oklch(0.554 0.087 199.3);
+  --color-teal-700: oklch(0.46 0.072 199.3);
+  --color-teal-800: oklch(0.372 0.058 199.3);
+  --color-teal-900: oklch(0.301 0.047 199.3);
+  --color-sh: oklch(0.541 0.111 179.99);
+  --color-gh: oklch(0.381 0.131 259.84);
 }
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
+@font-face {
+  font-family: 'Pretendard-Bold';
+  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff')
+    format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Pretendard-SemiBold';
+  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff')
+    format('woff');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Pretendard-Medium';
+  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Medium.woff')
+    format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Pretendard-Regular';
+  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
+    format('woff');
+  font-weight: 400;
+  font-style: normal;
 }
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
+@layer base {
+  .display {
+    font-family: 'Pretendard-Bold', sans-serif;
+    font-size: 3rem; /* 48px */
+    line-height: 3.5rem; /* 56px */
+    letter-spacing: -0.03em;
+    color: var(--color-gray-900);
   }
-}
-
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
+  .headline {
+    font-family: 'Pretendard-Bold', sans-serif;
+    font-size: 2.5rem; /* 40px */
+    line-height: 3rem; /* 48px */
+    letter-spacing: -0.03em;
+    color: var(--color-gray-900);
   }
-
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
+  .section1 {
+    font-family: 'Pretendard-Bold', sans-serif;
+    font-size: 2rem; /* 32px */
+    line-height: 2.5rem; /* 40px */
+    letter-spacing: -0.03em;
+    color: var(--color-gray-900);
+  }
+  .section2 {
+    font-family: 'Pretendard-Medium', sans-serif;
+    font-size: 2rem; /* 32px */
+    line-height: 2.5rem; /* 40px */
+    letter-spacing: -0.03em;
+    color: var(--color-gray-900);
+  }
+  .title1 {
+    font-family: 'Pretendard-Bold', sans-serif;
+    font-size: 1.5rem; /* 24px */
+    line-height: 2rem; /* 32px */
+    letter-spacing: -0.03em;
+    color: var(--color-gray-900);
+  }
+  .title2 {
+    font-family: 'Pretendard-Medium', sans-serif;
+    font-size: 1.5rem; /* 24px */
+    line-height: 2rem; /* 32px */
+    letter-spacing: -0.03em;
+    color: var(--color-gray-900);
+  }
+  .subtitle1 {
+    font-family: 'Pretendard-Bold', sans-serif;
+    font-size: 1.25rem; /* 20px */
+    line-height: 1.75rem; /* 28px */
+    letter-spacing: -0.03em;
+    color: var(--color-gray-900);
+  }
+  .subtitle2 {
+    font-family: 'Pretendard-Medium', sans-serif;
+    font-size: 1.25rem; /* 20px */
+    line-height: 1.75rem; /* 28px */
+    letter-spacing: -0.03em;
+    color: var(--color-gray-900);
+  }
+  .body1 {
+    font-family: 'Pretendard-SemiBold', sans-serif;
+    font-size: 1rem; /* 16px */
+    line-height: 1.5rem; /* 24px */
+    letter-spacing: -0.03em;
+    color: var(--color-gray-900);
+  }
+  .body2 {
+    font-family: 'Pretendard-Regular', sans-serif;
+    font-size: 1rem; /* 16px */
+    line-height: 1.5rem; /* 24px */
+    letter-spacing: -0.03em;
+    color: var(--color-gray-900);
+  }
+  .label1 {
+    font-family: 'Pretendard-SemiBold', sans-serif;
+    font-size: 0.875rem; /* 14px */
+    line-height: 1.25rem; /* 20px */
+    letter-spacing: -0.03em;
+    color: var(--color-gray-900);
+  }
+  .label2 {
+    font-family: 'Pretendard-Regular', sans-serif;
+    font-size: 0.875rem; /* 14px */
+    line-height: 1.25rem; /* 20px */
+    letter-spacing: -0.03em;
+    color: var(--color-gray-900);
+  }
+  .caption1 {
+    font-family: 'Pretendard-SemiBold', sans-serif;
+    font-size: 0.75rem; /* 12px */
+    line-height: 1rem; /* 16px */
+    letter-spacing: -0.03em;
+    color: var(--color-gray-900);
+  }
+  .caption2 {
+    font-family: 'Pretendard-Regular', sans-serif;
+    font-size: 0.75rem; /* 12px */
+    line-height: 1rem; /* 16px */
+    letter-spacing: -0.03em;
+    color: var(--color-gray-900);
   }
 }
