@@ -1,6 +1,4 @@
-<script setup lang="ts">
-// const openReadmeInEditor = () => fetch('/__open-in-editor?file=README.md')
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div class="display">안녕하세요 주민종입니다.</div>
