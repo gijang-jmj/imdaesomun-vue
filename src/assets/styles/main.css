@@ -18,6 +18,7 @@
   --color-teal-300: oklch(0.863 0.09 199.3);
   --color-teal-400: oklch(0.794 0.12 199.3);
   --color-teal-500: oklch(0.679 0.106 199.3);
+  --color-teal-500-10: oklch(0.679 0.106 199.3 / 0.1);
   --color-teal-600: oklch(0.554 0.087 199.3);
   --color-teal-700: oklch(0.46 0.072 199.3);
   --color-teal-800: oklch(0.372 0.058 199.3);
@@ -55,103 +56,91 @@
   font-style: normal;
 }
 
-@layer base {
-  .display {
-    font-family: 'Pretendard-Bold', sans-serif;
-    font-size: 3rem; /* 48px */
-    line-height: 3.5rem; /* 56px */
-    letter-spacing: -0.03em;
-    color: var(--color-gray-900);
-  }
-  .headline {
-    font-family: 'Pretendard-Bold', sans-serif;
-    font-size: 2.5rem; /* 40px */
-    line-height: 3rem; /* 48px */
-    letter-spacing: -0.03em;
-    color: var(--color-gray-900);
-  }
-  .section1 {
-    font-family: 'Pretendard-Bold', sans-serif;
-    font-size: 2rem; /* 32px */
-    line-height: 2.5rem; /* 40px */
-    letter-spacing: -0.03em;
-    color: var(--color-gray-900);
-  }
-  .section2 {
-    font-family: 'Pretendard-Medium', sans-serif;
-    font-size: 2rem; /* 32px */
-    line-height: 2.5rem; /* 40px */
-    letter-spacing: -0.03em;
-    color: var(--color-gray-900);
-  }
-  .title1 {
-    font-family: 'Pretendard-Bold', sans-serif;
-    font-size: 1.5rem; /* 24px */
-    line-height: 2rem; /* 32px */
-    letter-spacing: -0.03em;
-    color: var(--color-gray-900);
-  }
-  .title2 {
-    font-family: 'Pretendard-Medium', sans-serif;
-    font-size: 1.5rem; /* 24px */
-    line-height: 2rem; /* 32px */
-    letter-spacing: -0.03em;
-    color: var(--color-gray-900);
-  }
-  .subtitle1 {
-    font-family: 'Pretendard-Bold', sans-serif;
-    font-size: 1.25rem; /* 20px */
-    line-height: 1.75rem; /* 28px */
-    letter-spacing: -0.03em;
-    color: var(--color-gray-900);
-  }
-  .subtitle2 {
-    font-family: 'Pretendard-Medium', sans-serif;
-    font-size: 1.25rem; /* 20px */
-    line-height: 1.75rem; /* 28px */
-    letter-spacing: -0.03em;
-    color: var(--color-gray-900);
-  }
-  .body1 {
-    font-family: 'Pretendard-SemiBold', sans-serif;
-    font-size: 1rem; /* 16px */
-    line-height: 1.5rem; /* 24px */
-    letter-spacing: -0.03em;
-    color: var(--color-gray-900);
-  }
-  .body2 {
-    font-family: 'Pretendard-Regular', sans-serif;
-    font-size: 1rem; /* 16px */
-    line-height: 1.5rem; /* 24px */
-    letter-spacing: -0.03em;
-    color: var(--color-gray-900);
-  }
-  .label1 {
-    font-family: 'Pretendard-SemiBold', sans-serif;
-    font-size: 0.875rem; /* 14px */
-    line-height: 1.25rem; /* 20px */
-    letter-spacing: -0.03em;
-    color: var(--color-gray-900);
-  }
-  .label2 {
-    font-family: 'Pretendard-Regular', sans-serif;
-    font-size: 0.875rem; /* 14px */
-    line-height: 1.25rem; /* 20px */
-    letter-spacing: -0.03em;
-    color: var(--color-gray-900);
-  }
-  .caption1 {
-    font-family: 'Pretendard-SemiBold', sans-serif;
-    font-size: 0.75rem; /* 12px */
-    line-height: 1rem; /* 16px */
-    letter-spacing: -0.03em;
-    color: var(--color-gray-900);
-  }
-  .caption2 {
-    font-family: 'Pretendard-Regular', sans-serif;
-    font-size: 0.75rem; /* 12px */
-    line-height: 1rem; /* 16px */
-    letter-spacing: -0.03em;
-    color: var(--color-gray-900);
-  }
+@utility text-display {
+  font-family: 'Pretendard-Bold', sans-serif;
+  font-size: 3rem; /* 48px */
+  line-height: 3.5rem; /* 56px */
+  letter-spacing: -0.03em;
+}
+@utility text-headline {
+  font-family: 'Pretendard-Bold', sans-serif;
+  font-size: 2.5rem; /* 40px */
+  line-height: 3rem; /* 48px */
+  letter-spacing: -0.03em;
+}
+@utility text-section-bold {
+  font-family: 'Pretendard-Bold', sans-serif;
+  font-size: 2rem; /* 32px */
+  line-height: 2.5rem; /* 40px */
+  letter-spacing: -0.03em;
+}
+@utility text-section {
+  font-family: 'Pretendard-Medium', sans-serif;
+  font-size: 2rem; /* 32px */
+  line-height: 2.5rem; /* 40px */
+  letter-spacing: -0.03em;
+}
+@utility text-title-bold {
+  font-family: 'Pretendard-Bold', sans-serif;
+  font-size: 1.5rem; /* 24px */
+  line-height: 2rem; /* 32px */
+  letter-spacing: -0.03em;
+}
+@utility text-title {
+  font-family: 'Pretendard-Medium', sans-serif;
+  font-size: 1.5rem; /* 24px */
+  line-height: 2rem; /* 32px */
+  letter-spacing: -0.03em;
+}
+@utility text-subtitle-bold {
+  font-family: 'Pretendard-Bold', sans-serif;
+  font-size: 1.25rem; /* 20px */
+  line-height: 1.75rem; /* 28px */
+  letter-spacing: -0.03em;
+}
+@utility text-subtitle {
+  font-family: 'Pretendard-Medium', sans-serif;
+  font-size: 1.25rem; /* 20px */
+  line-height: 1.75rem; /* 28px */
+  letter-spacing: -0.03em;
+}
+@utility text-body-bold {
+  font-family: 'Pretendard-SemiBold', sans-serif;
+  font-size: 1rem; /* 16px */
+  line-height: 1.5rem; /* 24px */
+  letter-spacing: -0.03em;
+}
+@utility text-body {
+  font-family: 'Pretendard-Regular', sans-serif;
+  font-size: 1rem; /* 16px */
+  line-height: 1.5rem; /* 24px */
+  letter-spacing: -0.03em;
+}
+@utility text-label-bold {
+  font-family: 'Pretendard-SemiBold', sans-serif;
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.25rem; /* 20px */
+  letter-spacing: -0.03em;
+}
+@utility text-label {
+  font-family: 'Pretendard-Regular', sans-serif;
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.25rem; /* 20px */
+  letter-spacing: -0.03em;
+}
+@utility text-caption-bold {
+  font-family: 'Pretendard-SemiBold', sans-serif;
+  font-size: 0.75rem; /* 12px */
+  line-height: 1rem; /* 16px */
+  letter-spacing: -0.03em;
+}
+@utility text-caption {
+  font-family: 'Pretendard-Regular', sans-serif;
+  font-size: 0.75rem; /* 12px */
+  line-height: 1rem; /* 16px */
+  letter-spacing: -0.03em;
+}
+
+#app {
+  @apply bg-gray-50 text-gray-900;
 }

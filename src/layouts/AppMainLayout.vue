@@ -1,8 +1,12 @@
 <template>
-  <div class="max-w-5xl mx-auto">
-    <AppNav />
+  <div class="flex min-h-screen flex-col">
     <AppHeader />
-    <RouterView />
+    <div class="flex-1">
+      <div class="mx-auto max-w-5xl">
+        <RouterView />
+      </div>
+    </div>
+    <AppNav />
     <AppFooter />
   </div>
 </template>
