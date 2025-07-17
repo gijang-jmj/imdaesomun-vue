@@ -66,7 +66,7 @@ onMounted(() => {
   <div class="grid grid-cols-1 gap-4 p-4 md:grid-cols-2">
     <div class="flex flex-col items-stretch gap-2">
       <NoticeBanner :title="NoticeCorporationTypeKor.sh">
-        <IconSh class="w-8" />
+        <IconSh class="w-7 md:w-8" />
       </NoticeBanner>
       <ErrorCard
         v-if="shError"
@@ -91,7 +91,7 @@ onMounted(() => {
     </div>
     <div class="flex flex-col items-stretch gap-2">
       <NoticeBanner :title="NoticeCorporationTypeKor.gh">
-        <IconGh class="w-8" />
+        <IconGh class="w-7 md:w-8" />
       </NoticeBanner>
       <ErrorCard
         v-if="ghError"
@@ -116,7 +116,7 @@ onMounted(() => {
     </div>
     <div class="flex flex-col items-stretch gap-2">
       <NoticeBanner :title="NoticeCorporationTypeKor.ih">
-        <IconIh class="w-10" />
+        <IconIh class="w-9 md:w-10" />
       </NoticeBanner>
       <ErrorCard
         v-if="ihError"
@@ -141,7 +141,7 @@ onMounted(() => {
     </div>
     <div class="flex flex-col items-stretch gap-2">
       <NoticeBanner :title="NoticeCorporationTypeKor.bmc">
-        <IconBmc class="w-10" />
+        <IconBmc class="w-9 md:w-10" />
       </NoticeBanner>
       <ErrorCard
         v-if="bmcError"

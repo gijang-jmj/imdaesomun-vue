@@ -30,20 +30,20 @@ const corporationBgColor = computed(() => {
         class="flex items-center justify-center rounded-xl px-2 py-1"
         :class="corporationBgColor"
       >
-        <span class="text-caption-bold text-white">{{
+        <span class="text-caption text-white md:text-caption-bold">{{
           getNoticeCorporationTypeKor(props.corporation)
         }}</span>
       </div>
-      <span class="text-subtitle">{{ props.title }}</span>
+      <span class="text-body-bold md:text-subtitle">{{ props.title }}</span>
     </div>
     <div class="flex flex-wrap gap-x-3">
       <div class="flex items-center gap-1">
         <IconDate class="w-4 text-gray-500" />
-        <span class="text-body text-gray-500">{{ formatDate(props.date) }}</span>
+        <span class="text-label text-gray-500 md:text-body">{{ formatDate(props.date) }}</span>
       </div>
       <div class="flex items-center gap-1">
         <IconDepartment class="w-4 text-gray-500" />
-        <span class="text-body text-gray-500">{{ props.department }}</span>
+        <span class="text-label text-gray-500 md:text-body">{{ props.department }}</span>
       </div>
     </div>
   </RouterLink>

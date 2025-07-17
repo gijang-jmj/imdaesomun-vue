@@ -24,19 +24,21 @@ const props = defineProps<{
     <div v-if="isNewNotice(props.date)" class="rounded-xl bg-teal-500-10 px-1.5 py-0.5">
       <span class="text-label-bold text-teal-500">신규</span>
     </div>
-    <span class="text-subtitle">{{ props.title }}</span>
+    <span class="text-body-bold break-keep md:text-subtitle">{{ props.title }}</span>
     <div class="flex flex-wrap gap-x-3">
       <div class="flex items-center gap-1">
         <IconDate class="w-4 text-gray-500" />
-        <span class="text-body text-gray-500">{{ formatDate(props.date) }}</span>
+        <span class="text-label text-gray-500 md:text-body">{{ formatDate(props.date) }}</span>
       </div>
       <div class="flex items-center gap-1">
         <IconView class="w-4 text-gray-500" />
-        <span class="text-body text-gray-500">{{ formatNumberWithComma(props.views) }}</span>
+        <span class="text-label text-gray-500 md:text-body">{{
+          formatNumberWithComma(props.views)
+        }}</span>
       </div>
       <div class="flex items-center gap-1">
         <IconDepartment class="w-4 text-gray-500" />
-        <span class="text-body text-gray-500">{{ props.department }}</span>
+        <span class="text-label text-gray-500 md:text-body">{{ props.department }}</span>
       </div>
     </div>
   </RouterLink>
