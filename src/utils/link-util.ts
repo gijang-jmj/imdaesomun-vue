@@ -1,4 +1,4 @@
-export function postToUrl(url: string, params: Record<string, string>) {
+export const postToUrl = (url: string, params: Record<string, string>) => {
   const form = document.createElement('form')
   form.method = 'POST'
   form.action = url

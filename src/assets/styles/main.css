@@ -144,3 +144,8 @@
 #app {
   @apply bg-gray-50 text-gray-900;
 }
+
+.no-scroll {
+  overflow: hidden;
+  touch-action: none;
+}

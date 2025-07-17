@@ -55,11 +55,15 @@ onMounted(() => {
 </script>
 
 <template>
-  <InfoCard
-    class="mx-4 my-2"
-    content="최근 10개 공고만 제공되며, 과거 공고 및 검색·정렬 기능은 각 공사의 공식 홈페이지를 이용해주세요"
-  />
-  <div class="grid grid-cols-1 gap-4 px-4 py-4 md:grid-cols-2">
+  <div class="mx-4 my-2 flex flex-col items-stretch justify-start gap-2">
+    <InfoCard
+      content="최근 10개 공고만 제공되며, 과거 공고 및 검색·정렬 기능은 각 공사의 공식 홈페이지를 이용해주세요"
+    />
+    <div class="flex items-center justify-end">
+      <span class="text-caption text-gray-400">공고 DB | 2023.03.15 16:30 기준</span>
+    </div>
+  </div>
+  <div class="grid grid-cols-1 gap-4 p-4 md:grid-cols-2">
     <div class="flex flex-col items-stretch gap-2">
       <NoticeBanner :title="NoticeCorporationTypeKor.sh">
         <IconSh class="w-8" />

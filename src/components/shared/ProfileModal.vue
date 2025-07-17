@@ -2,14 +2,14 @@
 import { useModal } from '@/composables/useModal'
 import { useUserStore } from '@/stores/user-store'
 import InfoCard from './InfoCard.vue'
+import AppAvatar from '@/components/ui/AppAvatar.vue'
 import { watch } from 'vue'
-import AppAvatar from '../ui/AppAvatar.vue'
 
 const { close } = useModal()
-const userStore = useUserStore()
+const user = useUserStore()
 
 watch(
-  () => userStore.isLoggedIn,
+  () => user.isLoggedIn,
   (isLoggedIn) => {
     if (!isLoggedIn) {
       close()
@@ -22,21 +22,21 @@ watch(
 <template>
   <div class="flex flex-col items-center gap-4">
     <InfoCard class="w-full" content="프로필 정보를 확인하고 로그아웃할 수 있어요" />
-    <AppAvatar :photoURL="userStore.photoURL" alt="User Avatar" class="h-22 w-22" />
+    <AppAvatar class="h-16 w-16" :photoURL="user.photoURL" :isLogin="user.isLoggedIn" />
     <div class="text-center">
-      <p class="text-subtitle-bold">{{ userStore.displayName }}</p>
-      <p class="text-body text-gray-500">{{ userStore.email }}</p>
+      <p class="text-subtitle-bold">{{ user.displayName }}</p>
+      <p class="text-body text-gray-500">{{ user.email }}</p>
     </div>
     <div class="mt-4 flex w-full flex-col gap-2">
       <button
-        @click="userStore.logout"
-        class="w-full cursor-pointer rounded-lg bg-red-50 px-4 py-2 text-body text-red-500 transition-colors hover:bg-red-100"
+        @click="user.logout"
+        class="w-full cursor-pointer rounded-lg bg-red-100 px-4 py-2 text-body text-red-500 transition-colors hover:bg-red-200"
       >
         로그아웃
       </button>
       <button
         @click="close"
-        class="w-full cursor-pointer rounded-lg bg-gray-100 px-4 py-2 text-body text-gray-500 transition-colors hover:bg-gray-200"
+        class="w-full cursor-pointer rounded-lg bg-gray-200 px-4 py-2 text-body text-gray-500 transition-colors hover:bg-gray-300"
       >
         닫기
       </button>

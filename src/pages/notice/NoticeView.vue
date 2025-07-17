@@ -1,13 +1,32 @@
 <script setup lang="ts">
 import { useNotice } from '@/composables/useNotice'
-import { onMounted } from 'vue'
+import { onMounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import NoticeDetail from './components/NoticeDetail.vue'
 import ErrorCard from '@/components/shared/ErrorCard.vue'
 import NoticeDetailSkeleton from './components/NoticeDetailSkeleton.vue'
+import { useUserStore } from '@/stores/user-store'
 
 const route = useRoute()
-const { notice, isLoading, error, fetchNoticeById } = useNotice()
+const {
+  notice,
+  isSaved,
+  isLoading,
+  error,
+  fetchNoticeById,
+  checkIfNoticeSaved,
+  handleSaveNotice,
+  handleDeleteNotice,
+} = useNotice()
+const userStore = useUserStore()
+
+const handleSaveClick = (id: string, isSaved: boolean) => {
+  if (isSaved) {
+    handleDeleteNotice(id)
+  } else {
+    handleSaveNotice(id)
+  }
+}
 
 onMounted(() => {
   const id = route.query.id
@@ -15,6 +34,17 @@ onMounted(() => {
     fetchNoticeById(id)
   }
 })
+
+watch(
+  () => userStore.isLoggedIn,
+  () => {
+    const id = route.query.id
+    if (typeof id === 'string') {
+      checkIfNoticeSaved(id)
+    }
+  },
+  { immediate: true },
+)
 </script>
 
 <template>
@@ -29,7 +59,7 @@ onMounted(() => {
       />
     </template>
     <template v-else-if="notice">
-      <NoticeDetail :notice="notice" />
+      <NoticeDetail :notice="notice" :is-saved="isSaved" @save-clicked="handleSaveClick" />
     </template>
     <template v-else>
       <ErrorCard

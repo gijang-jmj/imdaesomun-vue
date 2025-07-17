@@ -4,17 +4,17 @@ import type { Component } from 'vue'
 const isOpen = shallowRef(false)
 const modalComponent = shallowRef<Component | null>(null)
 
-function open(component: Component) {
+const open = (component: Component) => {
   modalComponent.value = component
   isOpen.value = true
 }
 
-function close() {
+const close = () => {
   isOpen.value = false
   modalComponent.value = null
 }
 
-export function useModal() {
+export const useModal = () => {
   return {
     isOpen,
     modalComponent,

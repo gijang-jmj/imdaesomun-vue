@@ -2,13 +2,28 @@
 import { RouterLink, useRoute } from 'vue-router'
 import { AppRoute } from '@/constants/app-route'
 import IconHomeFill from '@/components/icons/IconHomeFill.vue'
+import AppAvatar from '@/components/ui/AppAvatar.vue'
+import { useUserStore } from '@/stores/user-store'
+import ProfileModal from '@/components/shared/ProfileModal.vue'
+import { useModal } from '@/composables/useModal'
+import LoginModal from '@/components/shared/LoginModal.vue'
 
 const route = useRoute()
+const user = useUserStore()
+const { open } = useModal()
+
+const onAvatarClick = () => {
+  if (user.isLoggedIn) {
+    open(ProfileModal)
+  } else {
+    open(LoginModal)
+  }
+}
 </script>
 
 <template>
   <header class="border-b border-gray-100 bg-white">
-    <div class="mx-auto flex max-w-5xl items-end justify-between px-4 py-4">
+    <div class="mx-auto flex max-w-5xl items-center justify-between px-4 py-4">
       <div class="flex items-end gap-10">
         <RouterLink :to="AppRoute.HOME" class="flex items-center gap-2">
           <IconHomeFill class="h-6 text-teal-500 md:h-8" />
@@ -31,8 +46,8 @@ const route = useRoute()
           >
         </nav>
       </div>
-      <div>
-        <span class="text-caption text-gray-400">공고 DB | 2023.03.15 16:30 기준</span>
+      <div class="cursor-pointer px-3 py-1" @click="onAvatarClick">
+        <AppAvatar class="h-7 w-7" :photoURL="user.photoURL" :isLogin="user.isLoggedIn" />
       </div>
     </div>
   </header>

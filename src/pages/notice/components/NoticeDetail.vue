@@ -12,6 +12,11 @@ import { postToUrl } from '@/utils/link-util'
 
 const props = defineProps<{
   notice: Notice
+  isSaved: boolean
+}>()
+
+const emit = defineEmits<{
+  (e: 'save-clicked', id: string, isSaved: boolean): void
 }>()
 
 const showAllFiles = ref(false)
@@ -36,10 +41,20 @@ const openPostFileLink = (fileId: string, fileLink: string) => {
     attachNo: fileId,
   })
 }
+
+const saveButtonClass = computed(() => {
+  return props.isSaved
+    ? 'bg-teal-500-10 text-teal-500 hover:bg-teal-100'
+    : 'bg-gray-200 text-gray-500 hover:bg-gray-300'
+})
+
+const saveButtonText = computed(() => {
+  return props.isSaved ? '저장됨' : '저장하기'
+})
 </script>
 
 <template>
-  <div class="mx-4 my-2 rounded-xl bg-white p-4 shadow-sm transition-colors md:p-6">
+  <div class="mx-4 mt-2 mb-4 rounded-xl bg-white p-4 shadow-sm transition-colors md:p-6">
     <div class="mb-4 flex flex-col gap-2 border-b border-gray-100 pb-4">
       <div class="flex flex-col">
         <span class="text-body-bold text-teal-500">{{
@@ -93,15 +108,17 @@ const openPostFileLink = (fileId: string, fileLink: string) => {
         :href="notice.link"
         target="_blank"
         rel="noopener noreferrer"
-        class="flex h-12 flex-9/12 cursor-pointer items-center justify-center gap-1 rounded-xl bg-teal-500 px-4 py-2 text-white md:flex-1"
+        class="flex h-12 flex-9/12 cursor-pointer items-center justify-center gap-1 rounded-xl bg-teal-500 px-4 py-2 text-white transition-colors hover:bg-teal-600 md:flex-1"
       >
         <span class="text-body">공고 열기</span>
         <IconLink class="w-4" />
       </a>
       <button
-        class="flex h-12 flex-3/12 cursor-pointer items-center justify-center gap-1 rounded-xl bg-gray-200 px-4 py-2 text-gray-500 md:flex-1"
+        class="flex h-12 flex-3/12 cursor-pointer items-center justify-center gap-1 rounded-xl px-4 py-2 transition-colors md:flex-1"
+        :class="saveButtonClass"
+        @click="emit('save-clicked', notice.id, props.isSaved)"
       >
-        <span class="hidden text-body md:inline-block">공고 저장</span>
+        <span class="hidden text-body md:inline-block">{{ saveButtonText }}</span>
         <IconBookmark class="w-4" />
       </button>
     </div>

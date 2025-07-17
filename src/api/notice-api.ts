@@ -47,3 +47,19 @@ export const getNoticeById = async (id: string): Promise<Notice> => {
 
   return notice
 }
+
+export const saveNotice = async (noticeId: string, userId: string): Promise<void> => {
+  await axiosInstance.post('/saveNotice', { noticeId, userId })
+}
+
+export const deleteNotice = async (noticeId: string, userId: string): Promise<void> => {
+  await axiosInstance.post('/deleteNotice', { noticeId, userId })
+}
+
+export const getNoticeSaved = async (noticeId: string, userId: string): Promise<boolean> => {
+  const response = await axiosInstance.get('/getNoticeSaved', {
+    params: { noticeId, userId },
+  })
+
+  return response.data.saved as boolean
+}
