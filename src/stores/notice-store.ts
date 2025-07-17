@@ -10,29 +10,15 @@ const createNoticeStore = (id: string, fetcher: () => Promise<Notice[]>) => {
     const error = ref<Error | null>(null)
 
     const fetchNotices = async () => {
-      const cachedNotices = localStorage.getItem(id)
-      if (cachedNotices) {
-        try {
-          notices.value = JSON.parse(cachedNotices)
-          return
-        } catch (e) {
-          localStorage.removeItem(id)
-          console.error('Failed to parse cached notices:', e)
-        }
+      if (notices.value.length > 0) {
+        return notices.value
       }
 
-      isLoading.value = true
-      error.value = null
       try {
         const fetchedData = await fetcher()
         notices.value = fetchedData
-        localStorage.setItem(id, JSON.stringify(fetchedData))
       } catch (e) {
-        if (e instanceof Error) {
-          error.value = e
-        } else {
-          error.value = new Error('An unknown error occurred')
-        }
+        console.error('Error fetching notices:', e)
       } finally {
         isLoading.value = false
       }

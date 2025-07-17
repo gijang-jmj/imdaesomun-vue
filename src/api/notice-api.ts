@@ -83,5 +83,6 @@ export const getSavedNotices = async ({
       corporation,
     },
   })
+
   return response.data
 }

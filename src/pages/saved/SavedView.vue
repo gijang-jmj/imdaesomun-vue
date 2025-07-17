@@ -74,34 +74,40 @@ onBeforeUnmount(() => {
       <InfoCard content="최근에 저장된 공고순으로 저장되어 있어요" />
     </div>
     <SavedFilter />
-    <div class="grid grid-cols-1 gap-x-4 gap-y-2 px-4 py-2 md:grid-cols-2">
-      <template v-if="error">
-        <ErrorCard
-          :content="'저장된 공고를 불러오는 중 오류가 발생했어요\n잠시 후 다시 시도해주세요'"
-        />
-      </template>
-      <template v-else-if="savedNotices.length <= 0 && isLoading">
-        <SavedCardSkeleton v-for="i in 10" :key="i" />
-      </template>
-      <template v-else>
-        <SavedCard
-          v-for="notice in savedNotices"
-          :key="notice.id"
-          :id="notice.id"
-          :title="notice.title"
-          :date="notice.regDate"
-          :department="notice.department"
-          :corporation="notice.corporation"
-        />
-      </template>
-      <template v-if="savedNotices.length > 0 && isLoading">
-        <SavedCardSkeleton v-for="i in 10" :key="i" />
-      </template>
-    </div>
+    <template v-if="savedNotices.length <= 0 && !isLoading">
+      <div class="m-4 flex flex-1 items-center justify-center">
+        <IconHomeFill class="h-20 flex-shrink-0 text-gray-500-10 md:h-30" />
+      </div>
+    </template>
+    <template v-else>
+      <div class="grid grid-cols-1 gap-x-4 gap-y-2 px-4 py-2 md:grid-cols-2">
+        <template v-if="error">
+          <ErrorCard
+            :content="'저장된 공고를 불러오는 중 오류가 발생했어요\n잠시 후 다시 시도해주세요'"
+          />
+        </template>
+        <template v-else-if="savedNotices.length <= 0 && isLoading">
+          <SavedCardSkeleton v-for="i in 10" :key="i" />
+        </template>
+        <template v-else>
+          <SavedCard
+            v-for="notice in savedNotices"
+            :key="notice.id"
+            :id="notice.id"
+            :title="notice.title"
+            :date="notice.regDate"
+            :department="notice.department"
+            :corporation="notice.corporation"
+          />
+        </template>
+        <template v-if="savedNotices.length > 0 && isLoading">
+          <SavedCardSkeleton v-for="i in 10" :key="i" />
+        </template>
+      </div>
+    </template>
     <div ref="bottomContainer" />
-    <div class="flex justify-center p-4">
+    <div v-if="savedNotices.length > 0 && hasMore && !isLoading" class="flex justify-center p-4">
       <button
-        v-if="savedNotices.length > 0 && hasMore && !isLoading"
         @click="savedStore.fetchSavedNotices"
         class="cursor-pointer rounded-full bg-teal-500-10 px-4 py-2 text-label-bold text-teal-500 transition-colors hover:bg-teal-200"
       >

@@ -59,9 +59,6 @@ onMounted(() => {
     <InfoCard
       content="최근 10개 공고만 제공되며, 과거 공고 및 검색·정렬 기능은 각 공사의 공식 홈페이지를 이용해주세요"
     />
-    <div class="flex items-center justify-end">
-      <span class="text-caption text-gray-400">공고 DB | 2023.03.15 16:30 기준</span>
-    </div>
   </div>
   <div class="grid grid-cols-1 gap-4 p-4 md:grid-cols-2">
     <div class="flex flex-col items-stretch gap-2">
