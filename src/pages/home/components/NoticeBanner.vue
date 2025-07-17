@@ -1,5 +1,5 @@
 <script setup lang="ts">
-defineProps<{
+const props = defineProps<{
   title: string
 }>()
 </script>
@@ -7,6 +7,6 @@ defineProps<{
 <template>
   <div class="flex items-center gap-2">
     <slot></slot>
-    <span class="text-title-bold">{{ title }}</span>
+    <span class="text-title-bold">{{ props.title }}</span>
   </div>
 </template>

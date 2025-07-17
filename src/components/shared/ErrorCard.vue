@@ -2,7 +2,7 @@
 import IconError from '../icons/IconError.vue'
 import { splitByNewline } from '@/utils/format-util'
 
-defineProps<{
+const props = defineProps<{
   content?: string
 }>()
 </script>
@@ -13,7 +13,7 @@ defineProps<{
     <div class="text-center">
       <p
         v-for="(line, index) in splitByNewline(
-          content ?? '오류가 발생했어요\n잠시 후 다시 시도해주세요',
+          props.content ?? '오류가 발생했어요\n잠시 후 다시 시도해주세요',
         )"
         :key="index"
         class="text-body text-gray-500"

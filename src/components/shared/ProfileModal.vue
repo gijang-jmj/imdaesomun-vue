@@ -3,6 +3,7 @@ import { useModal } from '@/composables/useModal'
 import { useUserStore } from '@/stores/user-store'
 import InfoCard from './InfoCard.vue'
 import { watch } from 'vue'
+import AppAvatar from '../ui/AppAvatar.vue'
 
 const { close } = useModal()
 const userStore = useUserStore()
@@ -21,12 +22,7 @@ watch(
 <template>
   <div class="flex flex-col items-center gap-4">
     <InfoCard class="w-full" content="프로필 정보를 확인하고 로그아웃할 수 있어요" />
-    <img
-      v-if="userStore.photoURL"
-      :src="userStore.photoURL"
-      alt="User Avatar"
-      class="h-22 w-22 rounded-full border-4 border-gray-100"
-    />
+    <AppAvatar :photoURL="userStore.photoURL" alt="User Avatar" class="h-22 w-22" />
     <div class="text-center">
       <p class="text-subtitle-bold">{{ userStore.displayName }}</p>
       <p class="text-body text-gray-500">{{ userStore.email }}</p>

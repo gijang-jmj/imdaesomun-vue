@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import IconInfo from '@/components/icons/IconInfo.vue'
 
-defineProps<{
+const props = defineProps<{
   content: string
 }>()
 </script>
@@ -10,7 +10,7 @@ defineProps<{
   <div class="flex items-center gap-2 rounded-xl bg-white p-4 shadow-sm">
     <IconInfo class="w-5 flex-shrink-0 text-teal-500" />
     <span class="text-label text-gray-500 md:text-body">
-      {{ content }}
+      {{ props.content }}
     </span>
   </div>
 </template>
