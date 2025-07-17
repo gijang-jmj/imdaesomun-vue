@@ -23,11 +23,11 @@ const onAvatarClick = () => {
 
 <template>
   <header class="border-b border-gray-100 bg-white">
-    <div class="mx-auto flex max-w-5xl items-center justify-between px-4 py-4">
+    <div class="mx-auto flex max-w-5xl items-center justify-between px-4 py-2 md:py-4">
       <div class="flex items-end gap-10">
         <RouterLink :to="AppRoute.HOME" class="flex items-center gap-2">
           <IconHomeFill class="h-6 text-teal-500 md:h-8" />
-          <span class="text-title-bold text-teal-500 md:text-section-bold">임대소문</span>
+          <span class="text-subtitle-bold text-teal-500 md:text-title-bold">임대소문</span>
         </RouterLink>
         <nav class="hidden items-center gap-4 md:flex">
           <RouterLink

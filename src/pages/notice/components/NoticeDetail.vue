@@ -44,8 +44,8 @@ const openPostFileLink = (fileId: string, fileLink: string) => {
 
 const saveButtonClass = computed(() => {
   return props.isSaved
-    ? 'bg-teal-500-10 text-teal-500 hover:bg-teal-100'
-    : 'bg-gray-200 text-gray-500 hover:bg-gray-300'
+    ? 'bg-teal-500-10 text-teal-500 hover:bg-teal-200'
+    : 'bg-gray-500-10 text-gray-500 hover:bg-gray-300'
 })
 
 const saveButtonText = computed(() => {

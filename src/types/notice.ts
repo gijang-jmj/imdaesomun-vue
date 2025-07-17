@@ -17,3 +17,15 @@ export interface File {
   fileLink: string
   fileId?: string
 }
+
+export interface NoticePagination {
+  notices: Notice[]
+  hasMore: boolean
+  nextOffset: number
+  totalFetched: number
+  totalCount: number
+  shCount: number
+  ghCount: number
+  ihCount: number
+  bmcCount: number
+}

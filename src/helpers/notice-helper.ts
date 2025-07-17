@@ -19,3 +19,18 @@ export const getNoticeCorporationTypeKor = (type: string): string => {
       return '알 수 없는 기관'
   }
 }
+
+export const getNoticeCorporationBgColor = (type: string): string => {
+  switch (type) {
+    case 'sh':
+      return 'bg-sh'
+    case 'gh':
+      return 'bg-gh'
+    case 'ih':
+      return 'bg-ih'
+    case 'bmc':
+      return 'bg-bmc'
+    default:
+      return 'bg-gray-500'
+  }
+}

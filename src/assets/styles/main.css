@@ -1,30 +1,35 @@
 @import 'tailwindcss';
 
 @theme {
-  /** Colors */
-  --color-gray-50: oklch(0.98 0.005 259.84);
-  --color-gray-100: oklch(0.959 0.014 259.84);
-  --color-gray-200: oklch(0.91 0.013 259.84);
-  --color-gray-300: oklch(0.851 0.017 259.84);
-  --color-gray-400: oklch(0.676 0.026 259.84);
-  --color-gray-500: oklch(0.512 0.031 259.84);
-  --color-gray-600: oklch(0.393 0.033 259.84);
-  --color-gray-700: oklch(0.318 0.035 259.84);
-  --color-gray-800: oklch(0.271 0.036 259.84);
-  --color-gray-900: oklch(0.218 0.036 259.84);
-  --color-teal-50: oklch(0.988 0.013 199.3);
-  --color-teal-100: oklch(0.965 0.03 199.3);
-  --color-teal-200: oklch(0.918 0.06 199.3);
-  --color-teal-300: oklch(0.863 0.09 199.3);
-  --color-teal-400: oklch(0.794 0.12 199.3);
-  --color-teal-500: oklch(0.679 0.106 199.3);
-  --color-teal-500-10: oklch(0.679 0.106 199.3 / 0.1);
-  --color-teal-600: oklch(0.554 0.087 199.3);
-  --color-teal-700: oklch(0.46 0.072 199.3);
-  --color-teal-800: oklch(0.372 0.058 199.3);
-  --color-teal-900: oklch(0.301 0.047 199.3);
-  --color-sh: oklch(0.541 0.111 179.99);
-  --color-gh: oklch(0.381 0.131 259.84);
+  /** Gray */
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-gray-500-10: #6b72801a; /* 10% opacity */
+  --color-gray-600: #4b5563;
+  --color-gray-700: #374151;
+  --color-gray-800: #2d3748;
+  --color-gray-900: #1f2937;
+  /** Teal */
+  --color-teal-50: #f3fefd;
+  --color-teal-100: #dbfaf6;
+  --color-teal-200: #b3f1e7;
+  --color-teal-300: #86e3d7;
+  --color-teal-400: #4fd2c1;
+  --color-teal-500: #2cb1a3;
+  --color-teal-500-10: #2cb1a31a; /* 10% opacity */
+  --color-teal-600: #1f8a7c;
+  --color-teal-700: #187064;
+  --color-teal-800: #145850;
+  --color-teal-900: #11443f;
+  /** Special */
+  --color-sh: #2a8461;
+  --color-gh: #004a9d;
+  --color-ih: #3333cc;
+  --color-bmc: #009ca6;
 }
 
 @font-face {

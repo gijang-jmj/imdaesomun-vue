@@ -11,6 +11,7 @@ import { useUserStore } from '@/stores/user-store'
 import { useModal } from './useModal'
 import LoginModal from '@/components/shared/LoginModal.vue'
 import { useLoading } from '@/composables/useLoading'
+import { useSavedStore } from '@/stores/saved-store'
 
 export const useNotice = () => {
   const notice = ref<Notice | null>(null)
@@ -21,6 +22,7 @@ export const useNotice = () => {
   const userStore = useUserStore()
   const { open } = useModal()
   const { showLoading, hideLoading } = useLoading()
+  const savedStore = useSavedStore()
 
   const stores = [
     useShNoticeListStore(),
@@ -67,6 +69,7 @@ export const useNotice = () => {
         showLoading()
         await saveNotice(id, userStore.uid)
         isSaved.value = true
+        savedStore.updateSavedNotice()
       } catch (error) {
         console.error('Error saving notice:', error)
       } finally {
@@ -83,6 +86,7 @@ export const useNotice = () => {
         showLoading()
         await deleteNotice(id, userStore.uid)
         isSaved.value = false
+        savedStore.updateSavedNotice()
       } catch (error) {
         console.error('Error deleting notice:', error)
       } finally {

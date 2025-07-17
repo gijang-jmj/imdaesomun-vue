@@ -36,7 +36,7 @@ watch(
       </button>
       <button
         @click="close"
-        class="w-full cursor-pointer rounded-lg bg-gray-200 px-4 py-2 text-body text-gray-500 transition-colors hover:bg-gray-300"
+        class="w-full cursor-pointer rounded-lg bg-gray-500-10 px-4 py-2 text-body text-gray-500 transition-colors hover:bg-gray-300"
       >
         닫기
       </button>

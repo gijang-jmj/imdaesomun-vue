@@ -16,7 +16,7 @@ const onImageError = () => {
 const avatarClass = computed(() => {
   return {
     'bg-teal-100 text-teal-500': props.isLogin,
-    'bg-gray-200 text-gray-400': !props.isLogin,
+    'bg-gray-500-10 text-gray-400': !props.isLogin,
   }
 })
 </script>

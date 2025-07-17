@@ -1,5 +1,5 @@
 import axiosInstance from '@/services/axios'
-import type { Notice } from '@/types/notice'
+import type { Notice, NoticePagination } from '@/types/notice'
 
 export const getShNoticeList = async (): Promise<Notice[]> => {
   const response = await axiosInstance.get<Notice[]>('/getShNotices')
@@ -42,7 +42,7 @@ export const getBmcNoticeList = async (): Promise<Notice[]> => {
 }
 
 export const getNoticeById = async (id: string): Promise<Notice> => {
-  const response = await axiosInstance.get<Notice>(`/getNoticeById?noticeId=${id}`)
+  const response = await axiosInstance.get<Notice>(`/getNoticeById`, { params: { noticeId: id } })
   const notice = response.data
 
   return notice
@@ -62,4 +62,26 @@ export const getNoticeSaved = async (noticeId: string, userId: string): Promise<
   })
 
   return response.data.saved as boolean
+}
+
+export const getSavedNotices = async ({
+  userId,
+  offset,
+  limit,
+  corporation,
+}: {
+  userId: string
+  offset: number
+  limit?: number
+  corporation?: string
+}): Promise<NoticePagination> => {
+  const response = await axiosInstance.get<NoticePagination>('/getSavedNotices', {
+    params: {
+      userId,
+      offset,
+      limit,
+      corporation,
+    },
+  })
+  return response.data
 }

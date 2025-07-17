@@ -3,8 +3,8 @@
     <AppModalLayout />
     <AppLoading />
     <AppHeader />
-    <div class="flex-1">
-      <div class="mx-auto max-w-5xl">
+    <div class="flex flex-1 flex-col">
+      <div class="mx-auto flex w-full max-w-5xl flex-1 flex-col">
         <RouterView />
       </div>
     </div>
