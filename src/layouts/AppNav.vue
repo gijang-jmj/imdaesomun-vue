@@ -45,8 +45,7 @@ const onAvatarClick = () => {
       </RouterLink>
       <div
         @click="onAvatarClick"
-        class="flex flex-1 flex-col items-center justify-center gap-0.5 py-2 transition-colors hover:text-teal-500"
-        :class="route.path === AppRoute.SAVED ? 'text-teal-500' : 'text-gray-400'"
+        class="flex flex-1 flex-col items-center justify-center gap-0.5 py-2 text-gray-400 transition-colors hover:text-teal-500"
       >
         <IconProfile class="h-5" />
         <span class="text-caption-bold">내정보</span>

@@ -13,16 +13,26 @@ const onImageError = () => {
   hasError.value = true
 }
 
+const containerClass = computed(() => {
+  return {
+    'bg-teal-500-10': props.isLogin,
+    'bg-gray-500-10': !props.isLogin,
+  }
+})
+
 const avatarClass = computed(() => {
   return {
-    'bg-teal-100 text-teal-500': props.isLogin,
-    'bg-gray-500-10 text-gray-400': !props.isLogin,
+    'text-teal-500': props.isLogin,
+    'text-gray-400': !props.isLogin,
   }
 })
 </script>
 
 <template>
-  <div class="flex items-center justify-center overflow-hidden rounded-full" :class="avatarClass">
+  <div
+    class="flex items-center justify-center overflow-hidden rounded-full"
+    :class="containerClass"
+  >
     <img
       v-if="props.photoURL && !hasError"
       :src="props.photoURL"
