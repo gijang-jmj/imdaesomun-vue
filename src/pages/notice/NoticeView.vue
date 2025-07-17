@@ -1,5 +1,41 @@
+<script setup lang="ts">
+import { useNotice } from '@/composables/useNotice'
+import { onMounted } from 'vue'
+import { useRoute } from 'vue-router'
+import NoticeDetail from './components/NoticeDetail.vue'
+import ErrorCard from '@/components/shared/ErrorCard.vue'
+import NoticeDetailSkeleton from './components/NoticeDetailSkeleton.vue'
+
+const route = useRoute()
+const { notice, isLoading, error, fetchNoticeById } = useNotice()
+
+onMounted(() => {
+  const id = route.query.id
+  if (typeof id === 'string') {
+    fetchNoticeById(id)
+  }
+})
+</script>
+
 <template>
   <div>
-    <h1>Notice Page</h1>
+    <template v-if="isLoading">
+      <NoticeDetailSkeleton />
+    </template>
+    <template v-else-if="error">
+      <ErrorCard
+        class="mx-4 my-2"
+        :content="'공고 상세를 불러오는 중 오류가 발생했어요\n잠시 후 다시 시도해주세요'"
+      />
+    </template>
+    <template v-else-if="notice">
+      <NoticeDetail :notice="notice" />
+    </template>
+    <template v-else>
+      <ErrorCard
+        class="mx-4 my-2"
+        :content="'해당 공고를 찾을 수 없어요\n다른 공고를 확인해주세요'"
+      />
+    </template>
   </div>
 </template>

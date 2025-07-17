@@ -1,3 +1,11 @@
+<script setup lang="ts">
+import { RouterLink, useRoute } from 'vue-router'
+import { AppRoute } from '@/constants/app-route'
+import IconHomeFill from '@/components/icons/IconHomeFill.vue'
+
+const route = useRoute()
+</script>
+
 <template>
   <header class="border-b border-gray-100 bg-white">
     <div class="mx-auto flex max-w-5xl items-end justify-between px-4 py-4">
@@ -9,18 +17,17 @@
         <nav class="hidden items-center gap-4 md:flex">
           <RouterLink
             :to="AppRoute.HOME"
-            class="rounded-lg px-3 py-1 text-subtitle text-teal-500 transition-colors hover:text-teal-500"
+            class="rounded-lg px-3 py-1 text-subtitle transition-colors hover:text-teal-500"
+            :class="
+              route.path === '/' || route.path === AppRoute.HOME ? 'text-teal-500' : 'text-gray-400'
+            "
             >홈</RouterLink
           >
           <RouterLink
             :to="AppRoute.SAVED"
-            class="rounded-lg px-3 py-1 text-subtitle text-gray-400 transition-colors hover:text-teal-500"
-            >저장됨</RouterLink
-          >
-          <RouterLink
-            :to="AppRoute.PROFILE"
-            class="rounded-lg px-3 py-1 text-subtitle text-gray-400 transition-colors hover:text-teal-500"
-            >내정보</RouterLink
+            class="rounded-lg px-3 py-1 text-subtitle transition-colors hover:text-teal-500"
+            :class="route.path === AppRoute.SAVED ? 'text-teal-500' : 'text-gray-400'"
+            >내 공고</RouterLink
           >
         </nav>
       </div>
@@ -30,9 +37,3 @@
     </div>
   </header>
 </template>
-
-<script setup lang="ts">
-import { RouterLink } from 'vue-router'
-import { AppRoute } from '@/constants/AppRoute'
-import IconHomeFill from '@/components/icons/IconHomeFill.vue'
-</script>

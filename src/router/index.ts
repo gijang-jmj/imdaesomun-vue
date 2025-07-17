@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { AppRoute } from '@/constants/AppRoute'
+import { AppRoute } from '@/constants/app-route'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -27,19 +27,20 @@ const router = createRouter({
           name: AppRoute.SAVED,
           component: () => import('@/pages/saved/SavedView.vue'),
         },
-        {
-          path: AppRoute.PROFILE,
-          name: AppRoute.PROFILE,
-          component: () => import('@/pages/profile/ProfileView.vue'),
-        },
-        {
-          path: AppRoute.VIEWER,
-          name: AppRoute.VIEWER,
-          component: () => import('@/pages/viewer/ViewerView.vue'),
-        },
       ],
     },
+    {
+      path: '/:pathMatch(.*)*',
+      redirect: AppRoute.HOME,
+    },
   ],
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return { top: 0 }
+    }
+  },
 })
 
 export default router

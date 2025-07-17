@@ -1,235 +1,163 @@
 <script setup lang="ts">
-import IconDate from '@/components/icons/IconDate.vue'
-import IconDepartment from '@/components/icons/IconDepartment.vue'
 import IconGh from '@/components/icons/IconGh.vue'
-import IconInfo from '@/components/icons/IconInfo.vue'
 import IconSh from '@/components/icons/IconSh.vue'
-import IconView from '@/components/icons/IconView.vue'
+import NoticeBanner from './components/NoticeBanner.vue'
+import NoticeCard from './components/NoticeCard.vue'
+import IconIh from '@/components/icons/IconIh.vue'
+import IconBmc from '@/components/icons/IconBmc.vue'
+import { onMounted } from 'vue'
+import { storeToRefs } from 'pinia'
+import {
+  useBmcNoticeListStore,
+  useGhNoticeListStore,
+  useIhNoticeListStore,
+  useShNoticeListStore,
+} from '@/stores/notice-store'
+import NoticeCardSkeleton from './components/NoticeCardSkeleton.vue'
+import InfoCard from '@/components/shared/InfoCard.vue'
+import ErrorCard from '@/components/shared/ErrorCard.vue'
+import { NoticeCorporationTypeKor } from '@/constants/notice'
+
+const shNoticeListStore = useShNoticeListStore()
+const {
+  notices: shNotices,
+  isLoading: shIsLoading,
+  error: shError,
+} = storeToRefs(shNoticeListStore)
+
+const ghNoticeListStore = useGhNoticeListStore()
+const {
+  notices: ghNotices,
+  isLoading: ghIsLoading,
+  error: ghError,
+} = storeToRefs(ghNoticeListStore)
+
+const ihNoticeListStore = useIhNoticeListStore()
+const {
+  notices: ihNotices,
+  isLoading: ihIsLoading,
+  error: ihError,
+} = storeToRefs(ihNoticeListStore)
+
+const bmcNoticeListStore = useBmcNoticeListStore()
+const {
+  notices: bmcNotices,
+  isLoading: bmcIsLoading,
+  error: bmcError,
+} = storeToRefs(bmcNoticeListStore)
+
+onMounted(() => {
+  shNoticeListStore.fetchNotices()
+  ghNoticeListStore.fetchNotices()
+  ihNoticeListStore.fetchNotices()
+  bmcNoticeListStore.fetchNotices()
+})
 </script>
 
 <template>
-  <div class="mx-4 my-2 flex items-center gap-2 rounded-xl bg-white p-4 shadow-xs">
-    <IconInfo class="w-5 flex-shrink-0 text-teal-500" />
-    <span class="text-body text-gray-500">
-      최근 10개 공고만 제공되며, 과거 공고 및 검색·정렬 기능은 각 공사의 공식 홈페이지를
-      이용해주세요
-    </span>
-  </div>
-  <div class="grid grid-cols-1 gap-4 px-4 md:grid-cols-2">
+  <InfoCard
+    class="mx-4 my-2"
+    content="최근 10개 공고만 제공되며, 과거 공고 및 검색·정렬 기능은 각 공사의 공식 홈페이지를 이용해주세요"
+  />
+  <div class="grid grid-cols-1 gap-4 px-4 py-4 md:grid-cols-2">
     <div class="flex flex-col items-stretch gap-2">
-      <div class="flex items-center gap-2">
+      <NoticeBanner :title="NoticeCorporationTypeKor.sh">
         <IconSh class="w-8" />
-        <span class="text-title-bold">서울주택도시공사</span>
-      </div>
-      <div class="flex flex-col gap-2">
-        <div class="flex flex-col items-start gap-2 rounded-xl bg-white p-4 shadow-xs">
-          <div class="rounded-xl bg-teal-500-10 px-1.5 py-0.5">
-            <span class="text-label-bold text-teal-500">신규</span>
-          </div>
-          <span class="text-subtitle">2025년 역세권주택 입주자 모집</span>
-          <div class="flex flex-wrap gap-x-4">
-            <div class="flex items-center gap-1">
-              <IconDate class="w-4 text-gray-500" />
-              <span class="text-body text-gray-500">2025.05.01</span>
-            </div>
-            <div class="flex items-center gap-1">
-              <IconView class="w-4 text-gray-500" />
-              <span class="text-body text-gray-500">2025.05.01</span>
-            </div>
-            <div class="flex items-center gap-1">
-              <IconDepartment class="w-4 text-gray-500" />
-              <span class="text-body text-gray-500">2025.05.01</span>
-            </div>
-          </div>
-        </div>
-        <div class="flex flex-col items-start gap-2 rounded-xl bg-white p-4 shadow-xs">
-          <div class="rounded-xl bg-teal-500-10 px-1.5 py-0.5">
-            <span class="text-label-bold text-teal-500">신규</span>
-          </div>
-          <span class="text-subtitle">2025년 역세권주택 입주자 모집</span>
-          <div class="flex flex-wrap gap-x-4">
-            <div class="flex items-center gap-1">
-              <IconDate class="w-4 text-gray-500" />
-              <span class="text-body text-gray-500">2025.05.01</span>
-            </div>
-            <div class="flex items-center gap-1">
-              <IconView class="w-4 text-gray-500" />
-              <span class="text-body text-gray-500">2025.05.01</span>
-            </div>
-            <div class="flex items-center gap-1">
-              <IconDepartment class="w-4 text-gray-500" />
-              <span class="text-body text-gray-500">2025.05.01</span>
-            </div>
-          </div>
-        </div>
-        <div class="flex flex-col items-start gap-2 rounded-xl bg-white p-4 shadow-xs">
-          <div class="rounded-xl bg-teal-500-10 px-1.5 py-0.5">
-            <span class="text-label-bold text-teal-500">신규</span>
-          </div>
-          <span class="text-subtitle">2025년 역세권주택 입주자 모집</span>
-          <div class="flex flex-wrap gap-x-4">
-            <div class="flex items-center gap-1">
-              <IconDate class="w-4 text-gray-500" />
-              <span class="text-body text-gray-500">2025.05.01</span>
-            </div>
-            <div class="flex items-center gap-1">
-              <IconView class="w-4 text-gray-500" />
-              <span class="text-body text-gray-500">2025.05.01</span>
-            </div>
-            <div class="flex items-center gap-1">
-              <IconDepartment class="w-4 text-gray-500" />
-              <span class="text-body text-gray-500">2025.05.01</span>
-            </div>
-          </div>
-        </div>
-        <div class="flex flex-col items-start gap-2 rounded-xl bg-white p-4 shadow-xs">
-          <div class="rounded-xl bg-teal-500-10 px-1.5 py-0.5">
-            <span class="text-label-bold text-teal-500">신규</span>
-          </div>
-          <span class="text-subtitle">2025년 역세권주택 입주자 모집</span>
-          <div class="flex flex-wrap gap-x-4">
-            <div class="flex items-center gap-1">
-              <IconDate class="w-4 text-gray-500" />
-              <span class="text-body text-gray-500">2025.05.01</span>
-            </div>
-            <div class="flex items-center gap-1">
-              <IconView class="w-4 text-gray-500" />
-              <span class="text-body text-gray-500">2025.05.01</span>
-            </div>
-            <div class="flex items-center gap-1">
-              <IconDepartment class="w-4 text-gray-500" />
-              <span class="text-body text-gray-500">2025.05.01</span>
-            </div>
-          </div>
-        </div>
-        <div class="flex flex-col items-start gap-2 rounded-xl bg-white p-4 shadow-xs">
-          <div class="rounded-xl bg-teal-500-10 px-1.5 py-0.5">
-            <span class="text-label-bold text-teal-500">신규</span>
-          </div>
-          <span class="text-subtitle">2025년 역세권주택 입주자 모집</span>
-          <div class="flex flex-wrap gap-x-4">
-            <div class="flex items-center gap-1">
-              <IconDate class="w-4 text-gray-500" />
-              <span class="text-body text-gray-500">2025.05.01</span>
-            </div>
-            <div class="flex items-center gap-1">
-              <IconView class="w-4 text-gray-500" />
-              <span class="text-body text-gray-500">2025.05.01</span>
-            </div>
-            <div class="flex items-center gap-1">
-              <IconDepartment class="w-4 text-gray-500" />
-              <span class="text-body text-gray-500">2025.05.01</span>
-            </div>
-          </div>
-        </div>
+      </NoticeBanner>
+      <ErrorCard
+        v-if="shError"
+        :content="'공고를 불러오는 중 오류가 발생했어요\n잠시 후 다시 시도해주세요'"
+      />
+      <div v-else class="flex flex-col gap-2">
+        <template v-if="shIsLoading">
+          <NoticeCardSkeleton v-for="i in 10" :key="i" />
+        </template>
+        <template v-else>
+          <NoticeCard
+            v-for="notice in shNotices"
+            :key="notice.id"
+            :id="notice.id"
+            :title="notice.title"
+            :date="notice.regDate"
+            :views="notice.hits"
+            :department="notice.department"
+          />
+        </template>
       </div>
     </div>
     <div class="flex flex-col items-stretch gap-2">
-      <div class="flex items-center gap-2">
+      <NoticeBanner :title="NoticeCorporationTypeKor.gh">
         <IconGh class="w-8" />
-        <span class="text-title-bold">경기주택도시공사</span>
+      </NoticeBanner>
+      <ErrorCard
+        v-if="ghError"
+        :content="'공고를 불러오는 중 오류가 발생했어요\n잠시 후 다시 시도해주세요'"
+      />
+      <div v-else class="flex flex-col gap-2">
+        <template v-if="ghIsLoading">
+          <NoticeCardSkeleton v-for="i in 10" :key="i" />
+        </template>
+        <template v-else>
+          <NoticeCard
+            v-for="notice in ghNotices"
+            :key="notice.id"
+            :id="notice.id"
+            :title="notice.title"
+            :date="notice.regDate"
+            :views="notice.hits"
+            :department="notice.department"
+          />
+        </template>
       </div>
-      <div class="flex flex-col gap-2">
-        <div class="flex flex-col items-start gap-2 rounded-xl bg-white p-4 shadow-xs">
-          <div class="rounded-xl bg-teal-500-10 px-1.5 py-0.5">
-            <span class="text-label-bold text-teal-500">신규</span>
-          </div>
-          <span class="text-subtitle">2025년 역세권주택 입주자 모집</span>
-          <div class="flex flex-wrap gap-x-4">
-            <div class="flex items-center gap-1">
-              <IconDate class="w-4 text-gray-500" />
-              <span class="text-body text-gray-500">2025.05.01</span>
-            </div>
-            <div class="flex items-center gap-1">
-              <IconView class="w-4 text-gray-500" />
-              <span class="text-body text-gray-500">2025.05.01</span>
-            </div>
-            <div class="flex items-center gap-1">
-              <IconDepartment class="w-4 text-gray-500" />
-              <span class="text-body text-gray-500">2025.05.01</span>
-            </div>
-          </div>
-        </div>
-        <div class="flex flex-col items-start gap-2 rounded-xl bg-white p-4 shadow-xs">
-          <div class="rounded-xl bg-teal-500-10 px-1.5 py-0.5">
-            <span class="text-label-bold text-teal-500">신규</span>
-          </div>
-          <span class="text-subtitle">2025년 역세권주택 입주자 모집</span>
-          <div class="flex flex-wrap gap-x-4">
-            <div class="flex items-center gap-1">
-              <IconDate class="w-4 text-gray-500" />
-              <span class="text-body text-gray-500">2025.05.01</span>
-            </div>
-            <div class="flex items-center gap-1">
-              <IconView class="w-4 text-gray-500" />
-              <span class="text-body text-gray-500">2025.05.01</span>
-            </div>
-            <div class="flex items-center gap-1">
-              <IconDepartment class="w-4 text-gray-500" />
-              <span class="text-body text-gray-500">2025.05.01</span>
-            </div>
-          </div>
-        </div>
-        <div class="flex flex-col items-start gap-2 rounded-xl bg-white p-4 shadow-xs">
-          <div class="rounded-xl bg-teal-500-10 px-1.5 py-0.5">
-            <span class="text-label-bold text-teal-500">신규</span>
-          </div>
-          <span class="text-subtitle">2025년 역세권주택 입주자 모집</span>
-          <div class="flex flex-wrap gap-x-4">
-            <div class="flex items-center gap-1">
-              <IconDate class="w-4 text-gray-500" />
-              <span class="text-body text-gray-500">2025.05.01</span>
-            </div>
-            <div class="flex items-center gap-1">
-              <IconView class="w-4 text-gray-500" />
-              <span class="text-body text-gray-500">2025.05.01</span>
-            </div>
-            <div class="flex items-center gap-1">
-              <IconDepartment class="w-4 text-gray-500" />
-              <span class="text-body text-gray-500">2025.05.01</span>
-            </div>
-          </div>
-        </div>
-        <div class="flex flex-col items-start gap-2 rounded-xl bg-white p-4 shadow-xs">
-          <div class="rounded-xl bg-teal-500-10 px-1.5 py-0.5">
-            <span class="text-label-bold text-teal-500">신규</span>
-          </div>
-          <span class="text-subtitle">2025년 역세권주택 입주자 모집</span>
-          <div class="flex flex-wrap gap-x-4">
-            <div class="flex items-center gap-1">
-              <IconDate class="w-4 text-gray-500" />
-              <span class="text-body text-gray-500">2025.05.01</span>
-            </div>
-            <div class="flex items-center gap-1">
-              <IconView class="w-4 text-gray-500" />
-              <span class="text-body text-gray-500">2025.05.01</span>
-            </div>
-            <div class="flex items-center gap-1">
-              <IconDepartment class="w-4 text-gray-500" />
-              <span class="text-body text-gray-500">2025.05.01</span>
-            </div>
-          </div>
-        </div>
-        <div class="flex flex-col items-start gap-2 rounded-xl bg-white p-4 shadow-xs">
-          <div class="rounded-xl bg-teal-500-10 px-1.5 py-0.5">
-            <span class="text-label-bold text-teal-500">신규</span>
-          </div>
-          <span class="text-subtitle">2025년 역세권주택 입주자 모집</span>
-          <div class="flex flex-wrap gap-x-4">
-            <div class="flex items-center gap-1">
-              <IconDate class="w-4 text-gray-500" />
-              <span class="text-body text-gray-500">2025.05.01</span>
-            </div>
-            <div class="flex items-center gap-1">
-              <IconView class="w-4 text-gray-500" />
-              <span class="text-body text-gray-500">2025.05.01</span>
-            </div>
-            <div class="flex items-center gap-1">
-              <IconDepartment class="w-4 text-gray-500" />
-              <span class="text-body text-gray-500">2025.05.01</span>
-            </div>
-          </div>
-        </div>
+    </div>
+    <div class="flex flex-col items-stretch gap-2">
+      <NoticeBanner :title="NoticeCorporationTypeKor.ih">
+        <IconIh class="w-10" />
+      </NoticeBanner>
+      <ErrorCard
+        v-if="ihError"
+        :content="'공고를 불러오는 중 오류가 발생했어요\n잠시 후 다시 시도해주세요'"
+      />
+      <div v-else class="flex flex-col gap-2">
+        <template v-if="ihIsLoading">
+          <NoticeCardSkeleton v-for="i in 10" :key="i" />
+        </template>
+        <template v-else>
+          <NoticeCard
+            v-for="notice in ihNotices"
+            :key="notice.id"
+            :id="notice.id"
+            :title="notice.title"
+            :date="notice.regDate"
+            :views="notice.hits"
+            :department="notice.department"
+          />
+        </template>
+      </div>
+    </div>
+    <div class="flex flex-col items-stretch gap-2">
+      <NoticeBanner :title="NoticeCorporationTypeKor.bmc">
+        <IconBmc class="w-10" />
+      </NoticeBanner>
+      <ErrorCard
+        v-if="bmcError"
+        :content="'공고를 불러오는 중 오류가 발생했어요\n잠시 후 다시 시도해주세요'"
+      />
+      <div v-else class="flex flex-col gap-2">
+        <template v-if="bmcIsLoading">
+          <NoticeCardSkeleton v-for="i in 10" :key="i" />
+        </template>
+        <template v-else>
+          <NoticeCard
+            v-for="notice in bmcNotices"
+            :key="notice.id"
+            :id="notice.id"
+            :title="notice.title"
+            :date="notice.regDate"
+            :views="notice.hits"
+            :department="notice.department"
+          />
+        </template>
       </div>
     </div>
   </div>
