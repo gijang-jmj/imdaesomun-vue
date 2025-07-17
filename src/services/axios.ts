@@ -1,21 +1,27 @@
 import axios from 'axios'
+import { getToken } from 'firebase/app-check'
+import { appCheck } from '@/firebase'
 
 const axiosInstance = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL,
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
-    'x-imdaesomun-api-key': 'U2FsdGVkX18Szkzvd4HgPj5wrSzD4WhlLbEOjc5Poww=',
   },
 })
 
-// 요청 인터셉터
-// axiosInstance.interceptors.request.use(config => {
-//   const token = localStorage.getItem('accessToken');
-//   if (token) {
-//     config.headers.Authorization = `Bearer ${token}`;
-//   }
-//   return config;
-// });
+// firebase app check token interceptor
+axiosInstance.interceptors.request.use(async (config) => {
+  try {
+    const tokenResult = await getToken(appCheck)
+    if (tokenResult?.token) {
+      config.headers['X-Firebase-AppCheck'] = tokenResult.token
+    }
+  } catch (err) {
+    console.warn('App Check token failed to attach:', err)
+  }
+
+  return config
+})
 
 export default axiosInstance
