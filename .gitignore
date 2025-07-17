@@ -31,3 +31,5 @@ coverage
 
 # ignore key files
 firebase.ts
+.env
+.env.production
