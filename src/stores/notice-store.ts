@@ -15,6 +15,7 @@ const createNoticeStore = (id: string, fetcher: () => Promise<Notice[]>) => {
       }
 
       try {
+        isLoading.value = true
         const fetchedData = await fetcher()
         notices.value = fetchedData
       } catch (e) {

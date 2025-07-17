@@ -33,3 +33,6 @@ coverage
 firebase.ts
 .env
 .env.production
+
+# Ignore build output
+/.firebase

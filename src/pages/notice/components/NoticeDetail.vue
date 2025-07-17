@@ -9,6 +9,7 @@ import { formatDate, formatNumberWithComma, splitByNewline } from '@/utils/forma
 import IconLink from '@/components/icons/IconLink.vue'
 import IconBookmark from '@/components/icons/IconBookmark.vue'
 import { postToUrl } from '@/utils/link-util'
+import IconBookmarkCheck from '@/components/icons/IconBookmarkCheck.vue'
 
 const props = defineProps<{
   notice: Notice
@@ -83,11 +84,21 @@ const saveButtonText = computed(() => {
       </p>
       <span v-if="notice.files.length === 0" class="text-body text-gray-500">첨부파일 없음</span>
       <div v-for="(file, index) in visibleFiles" :key="index">
-        <button v-if="file.fileId" @click="openPostFileLink(file.fileId, file.fileLink)">
-          <span class="cursor-pointer text-body text-teal-500 underline">{{ file.fileName }}</span>
+        <button
+          v-if="file.fileId"
+          @click="openPostFileLink(file.fileId, file.fileLink)"
+          class="cursor-pointer text-start text-body text-teal-500 underline"
+        >
+          {{ file.fileName }}
         </button>
-        <a v-else :href="file.fileLink" target="_blank" rel="noopener noreferrer">
-          <span class="cursor-pointer text-body text-teal-500 underline">{{ file.fileName }}</span>
+        <a
+          v-else
+          :href="file.fileLink"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="cursor-pointer text-start text-body text-teal-500 underline"
+        >
+          {{ file.fileName }}
         </a>
       </div>
       <button
@@ -119,7 +130,8 @@ const saveButtonText = computed(() => {
         @click="emit('save-clicked', notice.id, props.isSaved)"
       >
         <span class="hidden text-body md:inline-block">{{ saveButtonText }}</span>
-        <IconBookmark class="w-4" />
+        <IconBookmarkCheck v-if="props.isSaved" class="w-4" />
+        <IconBookmark v-else class="w-4" />
       </button>
     </div>
   </div>
