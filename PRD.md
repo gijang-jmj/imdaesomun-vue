@@ -61,11 +61,9 @@
 - Firebase Auth 기반 Google 소셜 로그인
 - 로그인 후 저장, 알림 등 사용자 기능 가능
 
-## 4. 🔗 API 명세 (요약)
+## 4. 🔗 API 명세
 
-- 인증 방식: Firebase App Check
-
-- API 목록은 [api_spec.md](./api_spec.md) 참조
+- API 목록은 [api_spec.md](https://github.com/gijang-jmj/imdaesomun/blob/main/doc) 참조
 
 ## 5. 🧱 프론트엔드 구조
 
