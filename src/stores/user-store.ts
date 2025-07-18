@@ -8,7 +8,7 @@ import {
   signOut,
   onAuthStateChanged,
 } from 'firebase/auth'
-import { checkInAppBrowser, openInExternalBrowser } from '@/utils/link-util'
+import { checkInAppBrowser } from '@/utils/link-util'
 
 export const useUserStore = defineStore('user', () => {
   const user = ref(auth.currentUser)
@@ -24,12 +24,7 @@ export const useUserStore = defineStore('user', () => {
     const isInAppBrowser = checkInAppBrowser()
 
     if (isInAppBrowser) {
-      const confirmOpen = confirm(
-        '현재 브라우저에서는 Google 로그인이 제한돼요\n외부 브라우저에서 열어 로그인하시겠어요?',
-      )
-      if (confirmOpen) {
-        openInExternalBrowser()
-      }
+      alert('현재 환경에서는 로그인이 어려워요.\n외부 브라우저를 이용해주세요.')
       return
     }
 
