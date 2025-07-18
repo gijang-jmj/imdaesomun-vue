@@ -109,7 +109,7 @@ const saveButtonText = computed(() => {
         {{ showMoreFilesText }}
       </button>
     </div>
-    <div class="mb-8 flex flex-col gap-4 text-body">
+    <div class="mb-8 flex flex-col gap-4 text-body break-all">
       <div class="flex flex-col gap-4" v-for="(content, index) in notice.contents" :key="index">
         <p v-for="(line, lineIndex) in splitByNewline(content)" :key="lineIndex">{{ line }}</p>
       </div>
