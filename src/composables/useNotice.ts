@@ -53,11 +53,8 @@ export const useNotice = () => {
 
       notice.value = await getNoticeById(id)
     } catch (e) {
-      if (e instanceof Error) {
-        error.value = e
-      } else {
-        error.value = new Error('An unknown error occurred while fetching the notice.')
-      }
+      error.value = e as Error
+      console.error('Error fetching notice by ID:', e)
     } finally {
       isLoading.value = false
     }
@@ -70,8 +67,8 @@ export const useNotice = () => {
         await saveNotice(id, userStore.uid)
         isSaved.value = true
         savedStore.updateSavedNotice()
-      } catch (error) {
-        console.error('Error saving notice:', error)
+      } catch (e) {
+        console.error('Error saving notice:', e)
       } finally {
         hideLoading()
       }
@@ -87,8 +84,8 @@ export const useNotice = () => {
         await deleteNotice(id, userStore.uid)
         isSaved.value = false
         savedStore.updateSavedNotice()
-      } catch (error) {
-        console.error('Error deleting notice:', error)
+      } catch (e) {
+        console.error('Error deleting notice:', e)
       } finally {
         hideLoading()
       }
@@ -101,8 +98,8 @@ export const useNotice = () => {
     if (userStore.isLoggedIn && userStore.uid) {
       try {
         isSaved.value = await getNoticeSaved(id, userStore.uid)
-      } catch (error) {
-        console.error('Error checking if notice is saved:', error)
+      } catch (e) {
+        console.error('Error checking if notice is saved:', e)
       }
     } else {
       isSaved.value = false

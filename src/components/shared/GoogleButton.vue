@@ -9,7 +9,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineEmits } from 'vue'
 import IconGoogle from '../icons/IconGoogle.vue'
 
 const emit = defineEmits<{

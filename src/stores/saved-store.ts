@@ -45,6 +45,7 @@ export const useSavedStore = defineStore('saved', () => {
       ihCount.value = response.ihCount
       bmcCount.value = response.bmcCount
     } catch (e) {
+      error.value = e as Error
       console.error('Error fetching saved notices:', e)
     } finally {
       isLoading.value = false

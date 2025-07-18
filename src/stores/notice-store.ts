@@ -19,6 +19,7 @@ const createNoticeStore = (id: string, fetcher: () => Promise<Notice[]>) => {
         const fetchedData = await fetcher()
         notices.value = fetchedData
       } catch (e) {
+        error.value = e as Error
         console.error('Error fetching notices:', e)
       } finally {
         isLoading.value = false

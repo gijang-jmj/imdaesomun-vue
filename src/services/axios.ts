@@ -17,8 +17,8 @@ axiosInstance.interceptors.request.use(async (config) => {
     if (tokenResult?.token) {
       config.headers['X-Firebase-AppCheck'] = tokenResult.token
     }
-  } catch (err) {
-    console.warn('App Check token failed to attach:', err)
+  } catch (e) {
+    console.warn('App Check token failed to attach:', e)
   }
 
   return config
