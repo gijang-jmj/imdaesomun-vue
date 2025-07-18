@@ -63,7 +63,7 @@
 
 ## 4. 🔗 API 명세
 
-- API 목록은 [api_spec.md](https://github.com/gijang-jmj/imdaesomun/blob/main/doc) 참조
+- API 목록은 [api_spec.md](https://github.com/gijang-jmj/imdaesomun/blob/main/docment/api_spec.md) 참조
 
 ## 5. 🧱 프론트엔드 구조
 
