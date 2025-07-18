@@ -19,3 +19,26 @@ export const postToUrl = (url: string, params: Record<string, string>) => {
   form.submit()
   document.body.removeChild(form) // cleanup
 }
+
+export const checkInAppBrowser = (): boolean => {
+  const ua = navigator.userAgent.toLowerCase()
+
+  return (
+    ua.includes('kakaotalk') ||
+    ua.includes('fbav') || // Facebook
+    ua.includes('instagram') ||
+    ua.includes('line') ||
+    (ua.includes('naver') && ua.includes('inapp'))
+  )
+}
+
+export const openInExternalBrowser = (): void => {
+  const a = document.createElement('a')
+  a.href = 'https://imdaesomun.web.app'
+  a.target = '_blank'
+  a.rel = 'noopener noreferrer'
+
+  document.body.appendChild(a)
+  a.click()
+  document.body.removeChild(a)
+}

@@ -8,6 +8,7 @@ import {
   signOut,
   onAuthStateChanged,
 } from 'firebase/auth'
+import { checkInAppBrowser, openInExternalBrowser } from '@/utils/link-util'
 
 export const useUserStore = defineStore('user', () => {
   const user = ref(auth.currentUser)
@@ -20,6 +21,18 @@ export const useUserStore = defineStore('user', () => {
 
   // 로그인
   const login = async () => {
+    const isInAppBrowser = checkInAppBrowser()
+
+    if (isInAppBrowser) {
+      const confirmOpen = confirm(
+        '현재 브라우저에서는 Google 로그인이 제한돼요\n외부 브라우저에서 열어 로그인하시겠어요?',
+      )
+      if (confirmOpen) {
+        openInExternalBrowser()
+      }
+      return
+    }
+
     const provider = new GoogleAuthProvider()
     const result = await signInWithPopup(auth, provider)
     user.value = result.user

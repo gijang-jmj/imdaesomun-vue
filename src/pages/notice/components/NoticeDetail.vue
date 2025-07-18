@@ -55,7 +55,7 @@ const saveButtonText = computed(() => {
 </script>
 
 <template>
-  <div class="mx-4 mt-2 mb-4 rounded-xl bg-white p-4 shadow-sm transition-colors md:p-6">
+  <div class="mx-4 mt-2 mb-24 rounded-xl bg-white p-4 shadow-sm transition-colors md:p-6">
     <div class="mb-4 flex flex-col gap-2 border-b border-gray-100 pb-4">
       <div class="flex flex-col">
         <span class="text-body-bold text-teal-500">{{

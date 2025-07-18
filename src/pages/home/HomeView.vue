@@ -60,7 +60,7 @@ onMounted(() => {
       content="최근 10개 공고만 제공되며, 과거 공고 및 검색·정렬 기능은 각 공사의 공식 홈페이지를 이용해주세요"
     />
   </div>
-  <div class="grid grid-cols-1 gap-4 p-4 md:grid-cols-2">
+  <div class="mb-24 grid grid-cols-1 gap-x-4 gap-y-8 p-4 md:grid-cols-2">
     <div class="flex flex-col items-stretch gap-2">
       <NoticeBanner :title="NoticeCorporationTypeKor.sh">
         <IconSh class="w-7 md:w-8" />
