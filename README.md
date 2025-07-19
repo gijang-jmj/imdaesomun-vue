@@ -44,17 +44,16 @@
 | 애니메이션 | Lottie-web + vue3-lottie                              |
 | 네트워크   | Axios                                                 |
 | 인증       | Firebase Auth (Google 로그인)                         |
-| 보안       | Firebase App Check (with. reCAPTCHA)                  |
+| 보안       | Firebase App Check (with. reCAPTCHA) + CORS           |
 | 배포       | Firebase Hosting                                      |
 | 유틸       | date-fns, vite-svg-loader                             |
 
 ## 📦 백엔드 및 인프라
 
-- Firebase Cloud Functions
+- Firebase Cloud Functions (API)
 - Google Cloud Scheduler (주기적 공고 크롤링)
-- Firebase Hosting (콘솔 운영용)
-- Google Secret Manager 키 관리
-- Firestore 보안 규칙 적용
+- Firebase Hosting (배포)
+- Firebase App Check (with. reCAPTCHA) + CORS
 
 ## 📄 PRD
 
