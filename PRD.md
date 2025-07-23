@@ -26,7 +26,7 @@
 
 | 구성 요소  | 기술                                                  |
 | ---------- | ----------------------------------------------------- |
-| 프론트엔드 | Vue 3 + TypeScript + Vite + Pinia                     |
+| 프론트엔드 | Vue 3 (with. Composition API) + TypeScript + Vite + Pinia                     |
 | 라우팅     | vue-router                                            |
 | 상태 관리  | Pinia                                                 |
 | 스타일링   | Tailwind CSS + Prettier + Prettier-plugin-tailwindcss |
